@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
       onSecondary: Colors.white,
       primaryFixedDim: Color(0xFFfb9164),
       surface: Color.fromRGBO(240, 240, 240, 1),
+
     );
   }
 

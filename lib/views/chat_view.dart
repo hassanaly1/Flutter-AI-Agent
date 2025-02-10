@@ -1,3 +1,6 @@
+import 'package:ai_agent/widgets/custom_button.dart';
+import 'package:ai_agent/widgets/custom_text.dart';
+import 'package:ai_agent/widgets/heading_and_textfield.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -32,21 +35,18 @@ class _ChatViewState extends State<ChatView> {
               size: 60.0,
               color: Colors.grey.shade600,
             ),
-            Text(
-              'Let\'s Talk',
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w600),
+            CustomTextWidget(
+              text: 'Let\'s Talk',
+              fontSize: 20.0,
+              fontWeight: FontWeight.w600,
             ),
             SizedBox(height: 8.0),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Text(
-                'Ask Questions to get insights based on your agent\'s description, persona, tone, and access to knowledge.',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Colors.grey.shade400,
-                    fontSize: 14.0,
-                    fontWeight: FontWeight.w700),
+              child: CustomTextWidget(
+                text:
+                    'Ask Questions to get insights based on your agent\'s description, persona, tone, and access to knowledge.',
+                maxLines: 3,
               ),
             ),
             SizedBox(height: 12.0),
@@ -74,9 +74,10 @@ class _ChatViewState extends State<ChatView> {
             Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-              child: Text(
-                'This conversation is only visible to you',
-                style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500),
+              child: CustomTextWidget(
+                text: 'This conversation is only visible to you',
+                fontSize: 14.0,
+                fontWeight: FontWeight.w500,
               ),
             ),
             Container(
@@ -93,108 +94,67 @@ class _ChatViewState extends State<ChatView> {
                   Padding(
                     padding:
                         EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
-                    child: TextFormField(
-                      maxLines: 1,
-                      decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white60,
-                          hintText: 'Ask me anything...',
-                          hintStyle: TextStyle(color: Colors.black54),
-                          suffixIcon: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              SizedBox(width: 8.0),
-                              Icon(
-                                CupertinoIcons.arrow_right_circle_fill,
-                                color: Colors.black45,
-                              ),
-                              SizedBox(width: 8.0),
-                              Icon(
-                                CupertinoIcons.mic_fill,
-                                color: Colors.black45,
-                              ),
-                              SizedBox(width: 8.0),
-                            ],
+                    child: CustomTextField(
+                      hintText: 'Ask Me Anything...',
+                      suffixIcon: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          SizedBox(width: 8.0),
+                          Icon(
+                            CupertinoIcons.arrow_right_circle_fill,
+                            color: Colors.black45,
                           ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12.0),
-                            borderSide: BorderSide.none,
-                          )),
-                      onTapOutside: (event) =>
-                          FocusManager.instance.primaryFocus?.unfocus(),
+                          SizedBox(width: 8.0),
+                          Icon(
+                            CupertinoIcons.mic_fill,
+                            color: Colors.black45,
+                          ),
+                          SizedBox(width: 8.0),
+                        ],
+                      ),
                     ),
                   ),
-                  Row(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 12.0, vertical: 8.0),
-                        child: Container(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 12.0, vertical: 6.0),
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).colorScheme.surface,
-                            borderRadius: BorderRadius.circular(16.0),
-                          ),
-                          child: Row(
-                            children: [
-                              Icon(Icons.menu),
-                              SizedBox(width: 8.0),
-                              Text(
-                                'General',
-                                style: TextStyle(
-                                    fontSize: 16.0,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Icon(Icons.attach_file),
-                      SizedBox(width: 2.0),
-                      Text(
-                        '3',
-                        style: TextStyle(
-                            fontSize: 16.0, fontWeight: FontWeight.w500),
-                      ),
-                    ],
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [
+                        // Padding(
+                        //   padding: EdgeInsets.symmetric(
+                        //       horizontal: 12.0, vertical: 8.0),
+                        //   child: Container(
+                        //     padding: EdgeInsets.symmetric(
+                        //         horizontal: 12.0, vertical: 6.0),
+                        //     decoration: BoxDecoration(
+                        //       color: Theme.of(context).colorScheme.surface,
+                        //       borderRadius: BorderRadius.circular(16.0),
+                        //     ),
+                        //     child: Row(
+                        //       children: [
+                        //         Icon(Icons.menu),
+                        //         SizedBox(width: 8.0),
+                        //         Text(
+                        //           'General',
+                        //           style: TextStyle(
+                        //               fontSize: 16.0,
+                        //               fontWeight: FontWeight.w500),
+                        //         ),
+                        //       ],
+                        //     ),
+                        //   ),
+                        // ),
+                        Icon(Icons.attach_file),
+                        SizedBox(width: 2.0),
+                        CustomTextWidget(
+                            text: '3',
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.w500),
+                      ],
+                    ),
                   )
                 ],
               ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class CustomButton extends StatelessWidget {
-  final String text;
-  final VoidCallback? onTap;
-  const CustomButton({
-    super.key,
-    required this.text,
-    this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 6.0),
-        margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 6.0),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8.0),
-            border: Border.all(color: Colors.grey.shade300, width: 1.0)),
-        child: Text(
-          text,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-              color: Colors.black54,
-              fontSize: 16.0,
-              fontWeight: FontWeight.w500),
         ),
       ),
     );
@@ -237,12 +197,12 @@ class CustomDrawerWidget extends StatelessWidget {
             ),
           ),
           CustomDrawerListTile(
-            title: '10:34 PM',
+            title: 'AsyncHandler Explanation Fix',
             subtitle: 'Monday, Jan 1st, 2025',
             onTap: () => Navigator.of(context).pop(),
           ),
           CustomDrawerListTile(
-            title: '12:15 AM',
+            title: 'AI Agent Discoveries',
             subtitle: 'Monday, Dec 31st, 2024',
             onTap: () => Navigator.of(context).pop(),
           ),
@@ -268,17 +228,18 @@ class CustomDrawerListTile extends StatelessWidget {
     return ListTile(
       visualDensity: VisualDensity.compact,
       onTap: onTap,
-      title: Text(
-        title,
-        style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500),
+      title: CustomTextWidget(
+        text: title,
+        fontSize: 14.0,
+        textAlign: TextAlign.start,
+        fontWeight: FontWeight.w500,
       ),
-      subtitle: Text(
-        subtitle,
-        style: TextStyle(
-          fontSize: 14.0,
-          fontWeight: FontWeight.w500,
-          color: Colors.grey,
-        ),
+      subtitle: CustomTextWidget(
+        text: subtitle,
+        textAlign: TextAlign.start,
+        fontWeight: FontWeight.w500,
+        fontSize: 12.0,
+        textColor: Colors.grey,
       ),
     );
   }

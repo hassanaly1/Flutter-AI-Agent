@@ -1,3 +1,5 @@
+import 'package:ai_agent/widgets/custom_text.dart';
+import 'package:ai_agent/widgets/heading_and_textfield.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -20,9 +22,10 @@ class _KnowledgeBaseViewState extends State<KnowledgeBaseView> {
       key: _key,
       appBar: AppBar(
         forceMaterialTransparency: true,
-        title: Text(
-          'Train your AI Agent',
-          style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500),
+        title: CustomTextWidget(
+          text: 'Train your AI Agent',
+          fontSize: 20.0,
+          fontWeight: FontWeight.w600,
         ),
         centerTitle: true,
       ),
@@ -32,40 +35,20 @@ class _KnowledgeBaseViewState extends State<KnowledgeBaseView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Train your AI Agents with dynamic knowledge from projects, web links, documents and more. Learn how to optimize your agent.',
-              style: TextStyle(
-                fontSize: 14.0,
-                fontWeight: FontWeight.w400,
-                color: Colors.black54,
-              ),
+            CustomTextWidget(
+              text:
+                  'Train your AI Agents with dynamic knowledge from projects, web links, documents and more. Learn how to optimize your agent.',
+              fontSize: 14.0,
+              maxLines: 5,
+              fontWeight: FontWeight.w400,
+              textColor: Colors.black54,
             ),
             SizedBox(height: 8.0),
-            Text(
-              'Instructions',
-              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w400),
-            ),
-            SizedBox(height: 2.0),
-            TextFormField(
-              maxLines: 3,
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.white54,
-                hintText: 'Enter Instructions',
-                hintStyle: TextStyle(color: Colors.black54),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12.0),
-                  borderSide:
-                      BorderSide(color: Colors.grey.shade300, width: 2.0),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12.0),
-                  borderSide: BorderSide(
-                      color: Theme.of(context).primaryColor, width: 2.0),
-                ),
-              ),
-              onTapOutside: (event) =>
-                  FocusManager.instance.primaryFocus?.unfocus(),
+            HeadingAndTextField(
+              title: 'Instructions',
+              fontSize: 16.0,
+              hintText: 'Enter Instructions',
+              maxLines: 6,
             ),
             SizedBox(height: 8.0),
             SwitchListTile.adaptive(
@@ -73,16 +56,17 @@ class _KnowledgeBaseViewState extends State<KnowledgeBaseView> {
               contentPadding: EdgeInsets.zero,
               value: true,
               onChanged: (value) {},
-              title: Text(
-                'Enable Knowledge',
-                style: GoogleFonts.poppins(
-                    fontSize: 16.0, fontWeight: FontWeight.w400),
+              title: CustomTextWidget(
+                text: 'Enable Knowledge',
+                fontSize: 16.0,
+                fontWeight: FontWeight.w400,
               ),
             ),
             SizedBox(height: 8.0),
-            Text(
-              'Add Sources +',
-              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w400),
+            CustomTextWidget(
+              text: 'Add Sources +',
+              fontSize: 16.0,
+              fontWeight: FontWeight.w400,
             ),
             SizedBox(height: 4.0),
             Container(
@@ -103,23 +87,22 @@ class _KnowledgeBaseViewState extends State<KnowledgeBaseView> {
                       size: 40.0,
                       color: Theme.of(context).colorScheme.primary,
                     ),
-                    Text(
-                      'Upload files here and select upload.',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: 14.0,
-                          color: Colors.black54,
-                          fontWeight: FontWeight.w600),
+                    CustomTextWidget(
+                      text: 'Upload files here and select upload.',
+                      fontSize: 14.0,
+                      textColor: Colors.black54,
+                      fontWeight: FontWeight.w600,
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                      child: Text(
-                        'Files supported(.pdf, .doc, .txt, .md, .pptx, .vlxs, .csv, .xlsx, .epub, .png, .jpg, .jpeg).',
+                      child: CustomTextWidget(
+                        text:
+                            'Files supported(.pdf, .doc, .txt, .md, .pptx, .vlxs, .csv, .xlsx, .epub, .png, .jpg, .jpeg).',
+                        fontSize: 10.0,
+                        maxLines: 2,
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: 12.0,
-                            color: Colors.grey,
-                            fontWeight: FontWeight.w400),
+                        textColor: Colors.grey,
+                        fontWeight: FontWeight.w400,
                       ),
                     ),
                   ],
@@ -149,33 +132,26 @@ class _KnowledgeBaseViewState extends State<KnowledgeBaseView> {
                 SizedBox(width: 8.0),
                 Expanded(
                   flex: 3,
-                  child: Text(
-                    'Title',
-                    style:
-                        TextStyle(fontSize: 14.0, fontWeight: FontWeight.w500),
+                  child: CustomTextWidget(
+                    text: 'Title',
+                    textAlign: TextAlign.start,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
                 SizedBox(width: 8.0),
                 Expanded(
                   flex: 2,
-                  child: Text(
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    textAlign: TextAlign.center,
-                    'Status',
-                    style:
-                        TextStyle(fontSize: 14.0, fontWeight: FontWeight.w500),
+                  child: CustomTextWidget(
+                    text: 'Status',
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
                 SizedBox(width: 8.0),
                 Expanded(
-                  child: Text(
-                    'Type',
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    textAlign: TextAlign.center,
-                    style:
-                        TextStyle(fontSize: 14.0, fontWeight: FontWeight.w500),
+                  flex: 2,
+                  child: CustomTextWidget(
+                    text: 'Type',
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
                 SizedBox(width: 8.0),
@@ -187,19 +163,19 @@ class _KnowledgeBaseViewState extends State<KnowledgeBaseView> {
             Divider(color: Colors.grey.shade300, thickness: 2.0),
             CustomProjectList(
               text: 'Project',
-              status: ProjectUploadStatus.pending,
+              status: ProjectUploadStatus.notReady,
               type: 'Project',
             ),
             Divider(color: Colors.grey.shade300, thickness: 2.0),
             CustomProjectList(
-              text: 'Get Started',
-              status: ProjectUploadStatus.completed,
+              text: 'Get Started PDF',
+              status: ProjectUploadStatus.ready,
               type: 'pdf',
             ),
             Divider(color: Colors.grey.shade300, thickness: 2.0),
             CustomProjectList(
               text: 'CV',
-              status: ProjectUploadStatus.rejected,
+              status: ProjectUploadStatus.ready,
               type: '.doc',
             ),
             SizedBox(height: 16.0),
@@ -225,15 +201,13 @@ class CustomProjectList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(Icons.file_copy_outlined),
+        Icon(CupertinoIcons.doc),
         SizedBox(width: 8.0),
         Expanded(
           flex: 3,
-          child: Text(
-            text,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w400),
+          child: CustomTextWidget(
+            text: text,
+            textAlign: TextAlign.start,
           ),
         ),
         SizedBox(width: 8.0),
@@ -242,43 +216,29 @@ class CustomProjectList extends StatelessWidget {
           child: Container(
               padding: EdgeInsets.all(4.0),
               decoration: BoxDecoration(
-                color: status == ProjectUploadStatus.pending
+                color: status == ProjectUploadStatus.notReady
                     ? Theme.of(context).colorScheme.primary
-                    : status == ProjectUploadStatus.completed
+                    : status == ProjectUploadStatus.ready
                         ? Colors.green
-                        : status == ProjectUploadStatus.rejected
-                            ? Colors.red
-                            : Theme.of(context).colorScheme.primary,
+                        : Theme.of(context).colorScheme.primary,
                 borderRadius: BorderRadius.circular(12.0),
               ),
               child: Center(
-                child: Text(
-                  status == ProjectUploadStatus.pending
-                      ? 'Pending'
-                      : status == ProjectUploadStatus.completed
-                          ? 'Completed'
-                          : status == ProjectUploadStatus.rejected
-                              ? 'Rejected'
-                              : 'N/A',
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 14.0,
-                    fontWeight: FontWeight.w400,
-                  ),
+                child: CustomTextWidget(
+                  text: status == ProjectUploadStatus.notReady
+                      ? 'Not Ready'
+                      : status == ProjectUploadStatus.ready
+                          ? 'Ready'
+                          : 'N/A',
+                  fontSize: 12.0,
+                  textColor: Colors.white,
                 ),
               )),
         ),
         SizedBox(width: 8.0),
         Expanded(
-          child: Text(
-            type,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w400),
-          ),
+          flex: 2,
+          child: CustomTextWidget(text: type),
         ),
         SizedBox(width: 8.0),
         Expanded(
@@ -290,9 +250,8 @@ class CustomProjectList extends StatelessWidget {
 }
 
 enum ProjectUploadStatus {
-  pending,
-  completed,
-  rejected,
+  notReady,
+  ready,
 }
 
 class CustomAddCard extends StatelessWidget {
@@ -327,14 +286,11 @@ class CustomAddCard extends StatelessWidget {
             ),
             SizedBox(width: 8.0),
             Flexible(
-              child: Text(
-                text,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: 14.0,
-                    color: Colors.black54,
-                    fontWeight: FontWeight.w600),
-              ),
+              child: CustomTextWidget(
+                  text: text,
+                  maxLines: 2,
+                  textColor: Colors.black54,
+                  fontWeight: FontWeight.w600),
             ),
           ],
         ),

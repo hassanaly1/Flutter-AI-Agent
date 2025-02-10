@@ -1,3 +1,4 @@
+import 'package:ai_agent/widgets/custom_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -95,10 +96,8 @@ class SendMessageExpansionTile extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: ExpansionTile(
-        title: Text(
-          'Send Messages',
-          style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500),
-        ),
+        title: CustomTextWidget(
+            text: 'Send Messages', fontSize: 16.0, fontWeight: FontWeight.w500),
         visualDensity: VisualDensity.compact,
         backgroundColor: Theme.of(context).colorScheme.surface,
         collapsedTextColor: Colors.black87,
@@ -175,10 +174,8 @@ class ExecuteExpansionTile extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: ExpansionTile(
-        title: Text(
-          'Execute',
-          style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500),
-        ),
+        title: CustomTextWidget(
+            text: 'Execute', fontSize: 16.0, fontWeight: FontWeight.w500),
         visualDensity: VisualDensity.compact,
         backgroundColor: Theme.of(context).colorScheme.surface,
         collapsedTextColor: Colors.black87,
@@ -244,10 +241,8 @@ class WebChatExpansionTile extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: ExpansionTile(
-        title: Text(
-          'Webchat',
-          style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500),
-        ),
+        title: CustomTextWidget(
+            text: 'Webchat', fontSize: 16.0, fontWeight: FontWeight.w500),
         visualDensity: VisualDensity.compact,
         backgroundColor: Theme.of(context).colorScheme.surface,
         collapsedTextColor: Colors.black87,
@@ -315,10 +310,8 @@ class BrowserExpansionTile extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: ExpansionTile(
         expandedAlignment: Alignment.centerLeft,
-        title: Text(
-          'Browser',
-          style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500),
-        ),
+        title: CustomTextWidget(
+            text: 'Browser', fontSize: 16.0, fontWeight: FontWeight.w500),
         visualDensity: VisualDensity.compact,
         backgroundColor: Theme.of(context).colorScheme.surface,
         collapsedTextColor: Colors.black87,
@@ -363,10 +356,10 @@ class KnowledgeBaseExpansionTile extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: ExpansionTile(
         expandedAlignment: Alignment.centerLeft,
-        title: Text(
-          'Knowledge Base Optimizer',
-          style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500),
-        ),
+        title: CustomTextWidget(
+            text: 'Knowledge Base Optimizer',
+            fontSize: 16.0,
+            fontWeight: FontWeight.w500),
         visualDensity: VisualDensity.compact,
         backgroundColor: Theme.of(context).colorScheme.surface,
         collapsedTextColor: Colors.black87,
@@ -417,15 +410,10 @@ class CustomCardWidget extends StatelessWidget {
           ),
           SizedBox(width: 4.0),
           Flexible(
-            child: Text(
-              text,
-              textAlign: TextAlign.center,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                  color: Colors.black54,
-                  fontSize: 14.0,
-                  fontWeight: FontWeight.w700),
+            child: CustomTextWidget(
+              text: text,
+              textColor: Colors.black54,
+              fontWeight: FontWeight.w700,
             ),
           ),
         ],
