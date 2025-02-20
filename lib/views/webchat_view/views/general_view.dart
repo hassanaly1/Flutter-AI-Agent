@@ -1,4 +1,3 @@
-import 'package:ai_agent/views/chat_view.dart';
 import 'package:ai_agent/widgets/app_colors.dart';
 import 'package:ai_agent/widgets/custom_button.dart';
 import 'package:ai_agent/widgets/custom_tabbar.dart';

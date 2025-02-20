@@ -43,6 +43,7 @@ class AdvanceSettingsView extends StatelessWidget {
                     'List of origins that are allowed to access the webchat. Leave an empty list to allow all origins.',
                 fontWeight: FontWeight.w500,
                 maxLines: 5,
+                textAlign: TextAlign.start,
                 textColor: Colors.black54,
                 fontSize: 12,
               ),
@@ -60,7 +61,8 @@ class AdvanceSettingsView extends StatelessWidget {
                         text:
                             'This feature is only available for Team and Enterprise plan.',
                         maxLines: 3,
-                        textAlign: TextAlign.center,
+                        textColor: Colors.black54,
+                        fontWeight: FontWeight.w500,
                       ),
                       SizedBox(height: 12.0),
                       Center(

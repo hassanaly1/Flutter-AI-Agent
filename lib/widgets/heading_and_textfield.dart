@@ -48,6 +48,7 @@ class HeadingAndTextField extends StatelessWidget {
             maxLines: 5,
             textColor: Colors.black54,
             fontSize: fontSize ?? 12,
+            textAlign: TextAlign.start,
           ),
           SizedBox(height: 4.0),
           CustomTextField(

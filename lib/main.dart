@@ -1,8 +1,12 @@
 import 'package:ai_agent/views/knowledge_base_view.dart';
+import 'package:ai_agent/views/settings/settings.dart';
 import 'package:ai_agent/views/tabbar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localization/flutter_localization.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await FlutterLocalization.instance.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -10,6 +14,7 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
+    final FlutterLocalization localization = FlutterLocalization.instance;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'AI Agent',
@@ -18,7 +23,9 @@ class MyApp extends StatelessWidget {
         colorScheme: lightTheme(),
         useMaterial3: true,
       ),
-      home: TabbarScreen(),
+      // supportedLocales: localization.supportedLocales,
+      localizationsDelegates: localization.localizationsDelegates,
+      home: SettingsScreen(),
     );
   }
 

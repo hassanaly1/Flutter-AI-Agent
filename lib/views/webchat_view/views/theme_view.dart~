@@ -205,6 +205,7 @@ class _ThemeViewState extends State<ThemeView> {
               ),
               ColorPicker(
                 onColorChanged: (value) {},
+                title: CustomTextWidget(text: 'Theme', fontSize: 14.0),
                 borderColor: Colors.black54,
                 tonalColorSameSize: true,
                 showColorCode: true,

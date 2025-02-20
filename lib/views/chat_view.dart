@@ -76,7 +76,8 @@ class _ChatViewState extends State<ChatView> {
                   const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
               child: CustomTextWidget(
                 text: 'This conversation is only visible to you',
-                fontSize: 14.0,
+                fontSize: 12.0,
+                textColor: Colors.black54,
                 fontWeight: FontWeight.w500,
               ),
             ),
