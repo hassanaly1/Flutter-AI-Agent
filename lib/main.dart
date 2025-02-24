@@ -1,8 +1,6 @@
-import 'package:ai_agent/views/knowledge_base_view.dart';
-import 'package:ai_agent/views/settings/settings.dart';
-import 'package:ai_agent/views/tabbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localization/flutter_localization.dart';
+import 'package:ai_agent/views/screenshots/screenshots.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,7 +23,7 @@ class MyApp extends StatelessWidget {
       ),
       // supportedLocales: localization.supportedLocales,
       localizationsDelegates: localization.localizationsDelegates,
-      home: SettingsScreen(),
+      home: ScreenShotsScreen(),
     );
   }
 
