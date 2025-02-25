@@ -138,22 +138,9 @@ class _AllScreenshotsViewState extends State<AllScreenshotsView> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Row(
-                      children: [
-                        Flexible(
-                          child: CustomDropdownWidget(
-                            hintText: 'Me',
-                            items: [],
-                          ),
-                        ),
-                        SizedBox(width: 8.0),
-                        Flexible(
-                          child: CustomDropdownWidget(
-                            hintText: 'Select Company (All)',
-                            items: widget.companyList,
-                          ),
-                        ),
-                      ],
+                    child: CustomDropdownWidget(
+                      hintText: 'Me',
+                      items: [],
                     ),
                   ),
                   Padding(
@@ -303,10 +290,26 @@ class _CustomSprintExpandedTileState extends State<CustomSprintExpandedTile> {
             itemBuilder: (context, index) {
               return InkWell(
                 onTap: () {
-                  showDialog(
+                  showModalBottomSheet(
                     context: context,
+                    sheetAnimationStyle: AnimationStyle(
+                      duration: const Duration(milliseconds: 500),
+                    ),
+                    isScrollControlled: true,
+                    enableDrag: true,
+                    showDragHandle: true,
                     builder: (context) {
-                      return ScreenshotDetailDialog();
+                      return DraggableScrollableSheet(
+                        initialChildSize: 0.6,
+                        minChildSize: 0.5,
+                        maxChildSize: 1.0,
+                        expand: false,
+                        builder: (context, scrollController) {
+                          return ScreenshotDetailDialog(
+                            controller: scrollController,
+                          );
+                        },
+                      );
                     },
                   );
                 },
@@ -319,7 +322,7 @@ class _CustomSprintExpandedTileState extends State<CustomSprintExpandedTile> {
                     image: DecorationImage(
                         fit: BoxFit.cover,
                         image: NetworkImage(
-                            'https://opengraph.githubassets.com/c615bf3406261bdc8b10b8af91195b8fc73db25a77c7d68eb7574ebed89cbf1d/Delunado/RandomScreenshotPrnt')),
+                            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXDONvtOJdpnR5mLnA3HMoeZZ_jl0vDxunFA&s')),
                   ),
                   child: Align(
                     alignment: Alignment.topRight,
